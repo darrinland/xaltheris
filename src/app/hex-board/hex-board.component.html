@@ -1,0 +1,30 @@
+<section class="hex-board-ui">
+  <header class="controls">
+    <label>Radius: <input type="number" [(ngModel)]="radius" (ngModelChange)="generate()" min="0" /></label>
+    <label>Diameter (px): <input type="number" [(ngModel)]="diameter" (ngModelChange)="generate()" min="4" /></label>
+    <label>Border (px): <input type="number" [(ngModel)]="border" (ngModelChange)="generate()" min="0" /></label>
+    <label>Spacing: <input type="number" step="0.1" [(ngModel)]="spacing" (ngModelChange)="generate()" min="0.5" /></label>
+    <label>Rotation:
+      <div class="pill-group" role="group" aria-label="Rotation">
+        <button type="button" class="pill" [class.active]="rotation === 0" (click)="rotation = 0; generate()">0°</button>
+        <button type="button" class="pill" [class.active]="rotation === 30" (click)="rotation = 30; generate()">30°</button>
+      </div>
+    </label>
+    <button (click)="printBoard()">Print</button>
+  </header>
+
+  <div class="board-wrapper" #board>
+    <svg [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg">
+      <g class="hex-group" [attr.transform]="groupTransform">
+        <g *ngFor="let poly of polygons">
+          <polygon
+            [attr.points]="toPointsAttr(poly.points)"
+            fill="#fff"
+            stroke="#222"
+            [attr.stroke-width]="border"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>

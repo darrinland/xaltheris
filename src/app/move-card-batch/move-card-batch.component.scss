@@ -1,0 +1,43 @@
+.batch-import {
+    max-width: 760px;
+    margin: 12px auto;
+}
+
+textarea {
+    width: 100%;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.actions {
+    margin-top: 8px;
+}
+
+.actions button {
+    margin-right: 8px;
+}
+
+.error {
+    color: #b00020;
+    margin-top: 8px;
+}
+
+.results {
+    margin-top: 12px;
+}
+
+.results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.results li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.moves {
+    color: #444;
+    font-size: 13px;
+    margin-top: 4px;
+}

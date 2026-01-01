@@ -1,0 +1,23 @@
+<div class="batch-import">
+    <h2>Import Movement Cards (CSV)</h2>
+    <p>Format: <strong>Title, Flavor, &lt;movement tokens...&gt;</strong>. Movement token example: <code>1F</code>,
+        <code>2RF</code>
+    </p>
+    <textarea [(ngModel)]="input" rows="8" placeholder="Paste CSV lines here"></textarea>
+    <div class="actions">
+        <button (click)="parseAll()">Parse</button>
+        <button (click)="downloadJSON()" [disabled]="cards.length===0">Download JSON</button>
+        <button (click)="printCards()" [disabled]="cards.length===0">Print Cards</button>
+    </div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div *ngIf="cards.length" class="results">
+        <h3>Parsed Cards ({{ cards.length }})</h3>
+        <ul>
+            <li *ngFor="let c of cards">
+                <strong>{{ c.title }}</strong> — {{ c.flavor }}
+                <div class="moves">{{ movementsText(c) }}</div>
+            </li>
+        </ul>
+    </div>
+</div>Z

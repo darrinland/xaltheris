@@ -1,0 +1,52 @@
+<section class="move-card">
+    <div class="card-wrap">
+        <!-- printable card preview -->
+        <div class="card-sheet card-printable" #card>
+            <header class="card-header">
+                <h2>{{ title }}</h2>
+            </header>
+
+            <p class="flavor"><em>{{ description }}</em></p>
+
+            <div class="mini-board">
+                <svg [attr.viewBox]="viewBoxStr" xmlns="http://www.w3.org/2000/svg">
+                    <g [attr.transform]="`rotate(${rotation} ${centerX} ${centerY})`">
+                        <g *ngFor="let p of polygons">
+                            <polygon [attr.points]="toPointsAttr(p.points)"
+                                [attr.fill]="isReachable(p.q, p.r) ? '#dff7df' : '#ffffff'" stroke="#222"
+                                [attr.stroke-width]="border" />
+                        </g>
+                        <!-- mark center -->
+                        <circle [attr.cx]="centerX" [attr.cy]="centerY" r="3" fill="#000" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- controls (not printed) -->
+        <aside class="card-controls">
+            <div class="controls">
+                <div class="meta">
+                    <label>Title: <input [(ngModel)]="title" /></label>
+                    <label>Description: <input [(ngModel)]="description" /></label>
+                </div>
+                <div class="moves">
+                    <label *ngFor="let key of directionOrder" class="move-row">
+                        <input type="checkbox" [(ngModel)]="moves[key].enabled" (ngModelChange)="update()" />
+                        <span class="move-key">{{ key }}</span>
+                        <label class="distance">
+                            <input type="checkbox" [(ngModel)]="moves[key].dist1" (ngModelChange)="update()" />1
+                        </label>
+                        <label class="distance">
+                            <input type="checkbox" [(ngModel)]="moves[key].dist2" (ngModelChange)="update()" />2
+                        </label>
+                    </label>
+                </div>
+                <div class="print-actions">
+                    <button (click)="printCard()">Print Card</button>
+                    <button (click)="exportPNG()">Export PNG</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

@@ -1,0 +1,115 @@
+.card-sheet {
+    width: 360px;
+    padding: 0;
+    /* content blocks handle spacing */
+    background: transparent;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    position: relative;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.flavor {
+    margin: 8px 0 0 0;
+    color: #333;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.card-wrap {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.mini-board {
+    width: 180px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.06);
+}
+
+.mini-board svg {
+    width: 160px;
+    height: 140px;
+    background: transparent;
+    display: block;
+}
+
+/* Title banner */
+.card-header {
+    background: linear-gradient(90deg, #4a9eff 0%, #3b6fd6 100%);
+    color: white;
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.moves {
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.move-row {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.move-key {
+    width: 32px;
+    font-weight: 600
+}
+
+.distance {
+    margin-left: 4px
+}
+
+.print-actions {
+    display: flex;
+    gap: 8px
+}
+
+.print-actions button {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px
+}
+
+/* Ensure controls are not printed */
+@media print {
+    .card-controls {
+        display: none
+    }
+
+    body {
+        background: white
+    }
+}
